@@ -21,8 +21,14 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  const res = Math.sign(number);
+  switch (res) {
+    case -1:
+      return false;
+    default:
+      return true;
+  }
 }
 
 /**
@@ -135,8 +141,13 @@ function convertNumberToString(/* numberStr */) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let reverseStr = '';
+  for (let i = 0; i < str.length; i += 1) {
+    reverseStr = str[i] + reverseStr;
+  }
+  if (str === reverseStr) return true;
+  return false;
 }
 
 /**
