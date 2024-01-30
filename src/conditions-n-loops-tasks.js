@@ -108,10 +108,32 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let result = '';
+  function romanNum(n) {
+    let numb = n;
+    if (numb >= 10) {
+      result += 'X';
+      numb -= 10;
+    } else if (numb === 9) {
+      result += 'IX';
+      numb -= 9;
+    } else if (numb >= 5) {
+      result += 'V';
+      numb -= 5;
+    } else if (numb === 4) {
+      result += 'IV';
+      numb -= 4;
+    } else if (numb >= 1) {
+      result += 'I';
+      numb -= 1;
+    } else if (numb === 0) {
+      return result;
+    }
+    return romanNum(numb);
+  }
+  return romanNum(num);
 }
-
 /**
  * Converts a number to a string, replacing digits with words.
  * In this task, the use of methods of the String and Array classes is not allowed.
@@ -301,7 +323,7 @@ function rotateMatrix(/* matrix */) {
  *
  * @param {number[]} arr - The array to sort.
  * @return {number[]} The sorted array.
- *
+ * git commit -m "feat: solve convertToRomanNumbers"
  * @example:
  *  [2, 9, 5]       => [2, 5, 9]
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
