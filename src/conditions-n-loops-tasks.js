@@ -90,8 +90,16 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === 0 || b === 0 || c === 0) return false;
+  if (
+    (a === b && a !== c && a + b > c) ||
+    (a === c && b !== a && a + c > b) ||
+    (b === c && b !== a && b + c > a)
+  ) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -231,8 +239,11 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) return i;
+  }
+  return -1;
 }
 
 /**
@@ -250,8 +261,15 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let currentNum = num;
+  while (Math.floor(currentNum) !== 0) {
+    const numToCheck = currentNum % 10;
+    if (numToCheck === digit) return true;
+    currentNum = Math.floor(currentNum / 10);
+    console.log(currentNum);
+  }
+  return false;
 }
 
 /**
@@ -267,8 +285,20 @@ function isContainNumber(/* num, digit */) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  for (let i = 0; i < arr.length; i += 1) {
+    let leftSum = 0;
+    let rightSum = 0;
+    for (let j = i; j < arr.length; j += 1) {
+      rightSum += arr[j];
+    }
+    for (let z = i; z >= 0; z -= 1) {
+      leftSum += arr[z];
+    }
+
+    if (leftSum === rightSum) return i;
+  }
+  return -1;
 }
 
 /**
@@ -311,9 +341,33 @@ function getSpiralMatrix(/* size */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* matrix */) {
-  throw new Error('Not implemented');
+function rotateMatrix(matrix) {
+  const resultMatrix = [];
+  let currentMatrix = [];
+  const currentIdx = 0;
+  function pushToMatrix(currentColumn) {
+    let column = currentColumn;
+    currentMatrix = [];
+    if (currentColumn === matrix.length) {
+      return resultMatrix;
+    }
+    for (let i = matrix.length - 1; i >= 0; i -= 1) {
+      currentMatrix.push(matrix[i][currentColumn]);
+    }
+    resultMatrix.push(currentMatrix);
+    column += 1;
+    return pushToMatrix(column);
+  }
+  return pushToMatrix(currentIdx);
 }
+
+console.log(
+  rotateMatrix([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ])
+);
 
 /**
  * Sorts an array of numbers in ascending order in place.
@@ -323,7 +377,7 @@ function rotateMatrix(/* matrix */) {
  *
  * @param {number[]} arr - The array to sort.
  * @return {number[]} The sorted array.
- * git commit -m "feat: solve convertToRomanNumbers"
+ *
  * @example:
  *  [2, 9, 5]       => [2, 5, 9]
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
