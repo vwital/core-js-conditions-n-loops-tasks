@@ -267,7 +267,6 @@ function isContainNumber(num, digit) {
     const numToCheck = currentNum % 10;
     if (numToCheck === digit) return true;
     currentNum = Math.floor(currentNum / 10);
-    console.log(currentNum);
   }
   return false;
 }
@@ -360,14 +359,6 @@ function rotateMatrix(matrix) {
   }
   return pushToMatrix(currentIdx);
 }
-
-console.log(
-  rotateMatrix([
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ])
-);
 
 /**
  * Sorts an array of numbers in ascending order in place.
