@@ -430,8 +430,6 @@ function sortByAsc(arr) {
   return array;
 }
 
-console.log(sortByAsc([-2, 9, 5, -3]));
-
 /**
  * Shuffles characters in a string so that the characters with an odd index are moved to the end of the string at each iteration.
  * Take into account that the string can be very long and the number of iterations is large. Consider how you can optimize your solution.
