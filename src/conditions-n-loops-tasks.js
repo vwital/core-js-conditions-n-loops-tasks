@@ -325,6 +325,22 @@ function getBalanceIndex(arr) {
  */
 function getSpiralMatrix() {
   return undefined;
+  // let directionRepeat = 1;
+  // let startValue = 1;
+  // let maxValue = size * size;
+  // let fillCounter = size - 1;
+  // const matrix = [];
+  // const innetMatrix = [];
+  // for (let i = 0; i < size; i += 1) {
+  //   matrix[i] = innetMatrix;
+  // }
+  // for (let i = 0; i < maxValuel; i += 1) {
+  //   if (directionRepeat === 2) {
+  //     fillCounter - 1;
+  //   } else {
+  //   }
+  // }
+
   // let initValue = 1;
   // let repeat = 1;
   // let maxValue = size * size;
@@ -352,9 +368,10 @@ function getSpiralMatrix() {
   // }
   // for (let i = 0; i < size; i += 1) {}
   // function(direction, repeat)
+  //   return matrix;
 }
 
-getSpiralMatrix(5);
+// console.log(getSpiralMatrix(5));
 
 /**
  * Rotates a matrix by 90 degrees clockwise in place.
@@ -371,33 +388,28 @@ getSpiralMatrix(5);
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix() {
-  return undefined;
-  // const resultMatrix = matrix;
-  // let matrixLength = matrix.length;
-  // let currentMatrix = [];
-  // for (let j = 0; j < matrix[0].length; j += 1) {
-  //   currentMatrix = [];
-  //   for (let i = matrix[0].length - 1; i >= 0; i -= 1) {
-  //     currentMatrix[j][i] = matrix[i][j];
-  //   }
-  //   console.log(currentMatrix);
-  //   resultMatrix.push(currentMatrix);
-  // }
-  // while (matrixLength > 0) {
-  //   matrix.shift(matrix[0]);
-  //   matrixLength -= 1;
-  // }
-  // return matrix;
+function rotateMatrix(matrix) {
+  const resultMatrix = matrix;
+  const currentMatrix = [];
+  let innerMatrix = [];
+  for (let k = 0; k < matrix.length; k += 1) {
+    currentMatrix[k] = innerMatrix;
+  }
+  for (let i = 0; i < matrix.length; i += 1) {
+    innerMatrix = [];
+    for (let j = 0; j < matrix[i].length; j += 1) {
+      innerMatrix[j] = matrix[matrix[i].length - 1 - j][i];
+    }
+    currentMatrix[i] = innerMatrix;
+  }
+  for (let i = 0; i < matrix.length; i += 1) {
+    for (let j = 0; j < matrix[i].length; j += 1) {
+      resultMatrix[i][j] = currentMatrix[i][j];
+    }
+  }
+  return matrix;
 }
 
-// console.log(
-//   rotateMatrix([
-//     [1, 2, 3],
-//     [4, 5, 6],
-//     [7, 8, 9],
-//   ])
-// );
 // console.log(rotateMatrix([mx]));
 // rotateMatrix(mx);
 /**
