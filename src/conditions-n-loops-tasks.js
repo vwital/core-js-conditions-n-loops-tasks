@@ -68,8 +68,10 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing() {
-  return undefined;
+function canQueenCaptureKing(queen, king) {
+  if (queen.x === king.x || queen.y === king.y) return true;
+  if (Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)) return true;
+  return false;
 }
 
 /**
@@ -321,9 +323,38 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix() {
+  return undefined;
+  // let initValue = 1;
+  // let repeat = 1;
+  // let maxValue = size * size;
+  // let currentFillCounter = size;
+  // let result = [];
+  // let arr = [];
+  // let currentSign = true;
+  // let directionReapeat = 0;
+  // for (let i = 0; i < size; i += 1) {
+  //   result[i] = arr;
+  // }
+  // while (initValue !== maxValue) {
+  //   if (directionReapeat === 2) {
+  //     currentSign = !currentSign;
+  //     directionReapeat = 0;
+  //   }
+  //   if (repeat === 2) {
+  //     currentFillCounter -= 1;
+  //     repeat = 0;
+  //   }
+  //   initValue += 1;
+  // }
+  // function fillMatrix(mainDir, secondDir){
+  //   for (let i = mainDir; )
+  // }
+  // for (let i = 0; i < size; i += 1) {}
+  // function(direction, repeat)
 }
+
+getSpiralMatrix(5);
 
 /**
  * Rotates a matrix by 90 degrees clockwise in place.
@@ -340,26 +371,35 @@ function getSpiralMatrix(/* size */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(matrix) {
-  const resultMatrix = [];
-  let currentMatrix = [];
-  const currentIdx = 0;
-  function pushToMatrix(currentColumn) {
-    let column = currentColumn;
-    currentMatrix = [];
-    if (currentColumn === matrix.length) {
-      return resultMatrix;
-    }
-    for (let i = matrix.length - 1; i >= 0; i -= 1) {
-      currentMatrix.push(matrix[i][currentColumn]);
-    }
-    resultMatrix.push(currentMatrix);
-    column += 1;
-    return pushToMatrix(column);
-  }
-  return pushToMatrix(currentIdx);
+function rotateMatrix() {
+  return undefined;
+  // const resultMatrix = matrix;
+  // let matrixLength = matrix.length;
+  // let currentMatrix = [];
+  // for (let j = 0; j < matrix[0].length; j += 1) {
+  //   currentMatrix = [];
+  //   for (let i = matrix[0].length - 1; i >= 0; i -= 1) {
+  //     currentMatrix[j][i] = matrix[i][j];
+  //   }
+  //   console.log(currentMatrix);
+  //   resultMatrix.push(currentMatrix);
+  // }
+  // while (matrixLength > 0) {
+  //   matrix.shift(matrix[0]);
+  //   matrixLength -= 1;
+  // }
+  // return matrix;
 }
 
+// console.log(
+//   rotateMatrix([
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9],
+//   ])
+// );
+// console.log(rotateMatrix([mx]));
+// rotateMatrix(mx);
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
